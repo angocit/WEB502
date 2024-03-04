@@ -1,0 +1,1 @@
+Cài đăt typecript: npm i -g typecript
