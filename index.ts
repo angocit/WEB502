@@ -9,9 +9,9 @@ const chuvi = (dai:number,rong:number):number=>{
     return (dai+rong)*2;
 }
 const dientich = (dai:number,rong:number):any=>{
-    return 'Dien tich la: '+dai*rong;
+    return 'Dien tich hình chữ nhật la: '+dai*rong;
 }
 const dai:number= 10;
 const rong:number= 20;
 console.log(`Chu vi là ${chuvi(dai,rong)}`);
-console.log(`Diện tích là ${dientich(dai,rong)}`);
+console.log(`${dientich(dai,rong)}`);

@@ -1,1 +1,8 @@
-Cài đăt typecript: npm i -g typecript
+Cài đăt typecript: npm i -g typescript
+-tạo file index.html
+-tạo file index.ts
+Biên dịch file ts => js: npx tsc index.ts
+Khởi tạo file tsconfig.json: npx tsc --init
+
+Biên dịch file ts khi có sự thay đổi nội dung.
+npx tsc -w
