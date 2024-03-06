@@ -1,0 +1,5 @@
+Cài đặt: npm i -g typescript => Ktra: npx tsc -v
+- Tạo file index.html và index.ts
+Tạo file tsconfig.json => npx tsc --init
+Biên dịch khi có sự thay đổi file .ts
+Gõ lệnh: npx tsc -w
