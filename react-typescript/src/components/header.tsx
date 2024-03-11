@@ -1,10 +1,15 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+    "title":string
+}
 
 const Header = (props: Props) => {
   return (
-    <header>Đây là đàu trang</header>
+    <>
+    {props.title}
+    <div>Đây là header</div>
+    </>
   )
 }
 

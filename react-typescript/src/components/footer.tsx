@@ -4,7 +4,7 @@ type Props = {}
 
 const Footer = (props: Props) => {
   return (
-    <footer>Đây là chân trang</footer>
+    <div>Footer</div>
   )
 }
 
