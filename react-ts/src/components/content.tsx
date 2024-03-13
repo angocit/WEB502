@@ -13,17 +13,22 @@ type IProduct = {
     "thumbnail": string,
     "images": string[]
 }
-
+type Idata = {
+  products:IProduct[],
+  total: number,
+  skip: number,
+  limit: number
+}
 const Content = () => {
   const [count,setCount] = useState<number>(1)
   const [page,setPage] = useState<number>(1)
   const [products,setProducts] = useState<IProduct[]>([]);
   useEffect(()=>{
      console.log(page); 
-     let skip =(page-1)*10;    
+     let skip:number =(page-1)*10;    
       fetch(`https://dummyjson.com/products?skip=${skip}&limit=10`)
       .then(response => response.json())
-      .then((data:any)=>{
+      .then((data:Idata)=>{
           // console.log(data.products);   
           setProducts(data.products);    
       })     
