@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { Iproduct } from '../interface/iproduct'
 
 type Props = {}
-type Iproduct =     {
-    "id": number,
-    "title": string,
-    "description": string,
-    "price": number,
-    "discountPercentage": number,
-    "rating": number,
-    "stock": number,
-    "brand": string,
-    "category": string,
-    "thumbnail": string,
-    "images":string[]
-  }
 const ProductList = (props: Props) => {
     const [count,setCount] = useState<number>(1)
     const [load,setLoad] = useState<number>(1)

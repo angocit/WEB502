@@ -1,16 +1,16 @@
 
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Content from './components/content'
-import Footer from './components/footer'
-import Header from './components/header'
-import ProductList from './components/product-list'
+import Home from './components/home'
+import ProductDetail from './components/product-detail'
 
 function App() {
   return (
     <>
-        <Header title='Giá trị gửi từ component cha'/>
-        <ProductList/>
-        <Footer/>
+       <Routes>
+          <Route path='/' Component={Home}/>
+          <Route path='/details/:id' Component={ProductDetail}/>
+       </Routes>
     </>
   )
 }
