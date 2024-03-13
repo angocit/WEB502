@@ -19,7 +19,9 @@ const Content = () => {
   const [page,setPage] = useState<number>(1)
   const [products,setProducts] = useState<IProduct[]>([]);
   useEffect(()=>{
-      fetch(`https://dummyjson.com/products?skip=0&limit=10`)
+     console.log(page); 
+     let skip =(page-1)*10;    
+      fetch(`https://dummyjson.com/products?skip=${skip}&limit=10`)
       .then(response => response.json())
       .then((data:any)=>{
           // console.log(data.products);   
