@@ -4,13 +4,13 @@ import Footer from './footer'
 
 type Props = {}
 
-const ProductList = (props: Props) => {
+const Home = (props: Props) => {
   return (
     <>
-    <Header title='Đây là trang danh sách sản phẩm'/>
+    <Header/>
+    <div>Home</div>
     <Footer/>
-   </>
+    </>
   )
 }
-
-export default ProductList
+export default Home

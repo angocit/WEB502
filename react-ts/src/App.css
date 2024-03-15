@@ -41,3 +41,4 @@
   color: #888;
 }
 img{max-width: 100%;}
+.nav-header ul li{list-style: none; display: inline; padding: 10px;}
