@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "id": "0d30",
+      "name": "Sản phẩm 1",
+      "image": "link ảnh 1",
+      "price": "100000"
+    },
+    {
+      "id": "6134",
+      "name": "fdskafjdsa",
+      "image": "sdfdsfds",
+      "price": "1000000"
+    },
+    {
+      "id": "1b4a",
+      "name": "sdsdfsdfsdf",
+      "image": "sdfsdfasdfadsf",
+      "price": "110000"
+    },
+    {
+      "id": "7646",
+      "name": "fdsaf saads afds ",
+      "image": "sdafasdfadsf",
+      "price": "100000"
+    },
+    {
+      "id": "0d76",
+      "name": "dsfasdf asfds afadsf ",
+      "image": "3423432",
+      "price": "32423423432"
+    },
+    {
+      "id": "0060",
+      "name": "sdafadsfasd ads",
+      "image": "adsfadsfadsf ",
+      "price": "23432432"
+    },
+    {
+      "id": "8057",
+      "name": "32423dfsgdsafads",
+      "image": "adsfadsfadsfads",
+      "price": "1100000"
+    }
+  ]
+}
