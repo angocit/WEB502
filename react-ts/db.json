@@ -11,6 +11,60 @@
       "name": "Sản phẩm 2",
       "image": "sdfasfasfadsf sad",
       "price": "121212"
+    },
+    {
+      "id": "dcd3",
+      "name": "Sản phẩm 3",
+      "image": "Ảnh 3",
+      "price": "10000"
+    },
+    {
+      "id": "b64c",
+      "name": "Sản phẩm mới",
+      "image": "shdakjfhadskjfh",
+      "price": 0
+    },
+    {
+      "id": "bc5a",
+      "name": "sdafadsf",
+      "image": "sdafadsf",
+      "price": "100000"
+    },
+    {
+      "id": "d29b",
+      "name": "dfasfdsaf",
+      "image": "adsfadsfas",
+      "price": "12312312"
+    },
+    {
+      "id": "b9d8",
+      "name": "123123",
+      "image": "fsfds",
+      "price": "1213"
+    },
+    {
+      "id": "bcd4",
+      "name": "dsafasd",
+      "image": "12412",
+      "price": "32287"
+    },
+    {
+      "id": "930a",
+      "name": "dsfsd",
+      "image": "sdfdsfs",
+      "price": "2342342"
+    },
+    {
+      "id": "0b66",
+      "name": "dsfsd dsafadsfads",
+      "image": "sdfdsfs",
+      "price": "2342342"
+    },
+    {
+      "id": "f1cd",
+      "name": "dsfsd dsafadsfads dsfadsfas",
+      "image": "sdfdsfs",
+      "price": "2342342"
     }
   ]
 }
