@@ -2,31 +2,19 @@ import React, { useState } from 'react'
 import Header from './header'
 import Footer from './footer'
 import { IProduct } from '../types/product'
-import Joi from 'joi'
+import {validateObj} from '../validate/product'
 
 type Props = {
     products:IProduct[],
     setProduct:(data:IProduct[])=>void
 }
-const validateObj = Joi.object({
-    name: Joi.string().required().empty().trim().messages({
-        "any:required": "Tên bắt buộc phải nhập",
-        "string.empty":"Tên không được để trống"
-    }),
-    image: Joi.string().required().empty().trim().messages({
-        "any:required": "Ảnh bắt buộc phải nhập",
-        "string.empty":"Ảnh không được để trống"
-    }),
-    price: Joi.number().required().empty().min(1000).messages({
-        "any:required": "Tên bắt buộc phải nhập",
-        "number.min":"Giá không nhỏ hơn 1000"
-    })
-})
+
 const Product = (props: Props) => {
     const [name,setName]=useState<string>('')
     const [image,setImage]=useState<string>('')
     const [price,setPrice]=useState<number>(0)
     const [message,setMessage]=useState<string>('')
+    
 const handleSubmit = (e:any)=>{
     e.preventDefault()
     console.log(name,image,price);
@@ -49,6 +37,21 @@ const handleSubmit = (e:any)=>{
     .catch((err:any) =>{
         setMessage(`Thêm không thành công ${err.message}`);
     })
+    }
+}
+const delProduct = (id:string)=>{
+    const confirm = window.confirm('Bạn có muốn xóa sản phẩm này không?')
+    if (confirm){
+        fetch(`http://localhost:3000/products/${id}`,{method:'DELETE'})
+        .then(response=>response.json())
+        .then((product:IProduct)=>{
+            const newproduct = props.products.filter((product:IProduct)=>product.id!==id)
+            props.setProduct(newproduct)
+            setMessage('Xóa thành công')
+        })
+        .catch(err=>{
+            setMessage('Có lỗi khi xóa sản phẩm')
+        })
     }
 }
   return (
@@ -82,7 +85,7 @@ const handleSubmit = (e:any)=>{
                                 <td>{product.image}</td>
                                 <td>{product.name}</td>
                                 <td>{product.price}</td>
-                                <td><button>Sửa</button><button>Xóa</button></td>
+                                <td><button>Sửa</button><button onClick={()=>{delProduct(product.id)}}>Xóa</button></td>
                             </tr>
                         )
                     })

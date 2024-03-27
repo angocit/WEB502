@@ -13,28 +13,10 @@
       "price": "121212"
     },
     {
-      "id": "dcd3",
-      "name": "Sản phẩm 3",
+      "name": "Sản phẩm 3 edit",
       "image": "Ảnh 3",
-      "price": "10000"
-    },
-    {
-      "id": "b64c",
-      "name": "Sản phẩm mới",
-      "image": "shdakjfhadskjfh",
-      "price": 0
-    },
-    {
-      "id": "bc5a",
-      "name": "sdafadsf",
-      "image": "sdafadsf",
-      "price": "100000"
-    },
-    {
-      "id": "d29b",
-      "name": "dfasfdsaf",
-      "image": "adsfadsfas",
-      "price": "12312312"
+      "price": "10000",
+      "id": "dcd3"
     },
     {
       "id": "b9d8",
