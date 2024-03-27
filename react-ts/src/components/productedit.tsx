@@ -12,7 +12,7 @@ type Props = {
 const ProductEdit = (props: Props) => {
     const [name,setName]=useState<string>('')
     const [image,setImage]=useState<string>('')
-    const [price,setPrice]=useState<number>(0)
+    const [price,setPrice]=useState<number>()
     const [message,setMessage]=useState<string>('')
     const params = useParams()
     const id = params.id

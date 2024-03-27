@@ -85,7 +85,7 @@ const delProduct = (id:string)=>{
                                 <td>{product.image}</td>
                                 <td>{product.name}</td>
                                 <td>{product.price}</td>
-                                <td><button>Sửa</button><button onClick={()=>{delProduct(product.id)}}>Xóa</button></td>
+                                <td><a href={`/products/edit/${product.id}`}>Sửa</a><button onClick={()=>{delProduct(product.id)}}>Xóa</button></td>
                             </tr>
                         )
                     })
