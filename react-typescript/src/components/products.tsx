@@ -38,6 +38,17 @@ const Products = ({products,setProduct}:Props) => {
         })
     }
     }
+    const delProduct = (id:string) => {
+       if(window.confirm('Are you sure you want to delete this product?')){
+            fetch(`http://localhost:3000/products/${id}`,{method: 'DELETE'})
+            .then(response =>response.json())
+            .then((product:Iproduct)=>{
+                const newproducts = products.filter((product:Iproduct)=>product.id!==id)
+                setProduct(newproducts);
+                setMessage(`Xóa sản phẩm ${product.name} thành công!`)
+            })
+       }
+    }
   return (
     <div>
         {message}
@@ -66,7 +77,7 @@ const Products = ({products,setProduct}:Props) => {
                                 <td><img src={product.image}/></td>
                                 <td>{product.name}</td>
                                 <td>{product.price}</td>
-                                <td><a>Sửa</a><button>Xóa</button></td>
+                                <td><a>Sửa</a><button onClick={()=>{delProduct(product.id)}}>Xóa</button></td>
                             </tr>
                         )
                     })

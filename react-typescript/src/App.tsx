@@ -8,6 +8,7 @@ import Post from './components/post'
 import Lab34 from './components/lab34'
 import { useEffect, useState } from 'react'
 import { Iproduct } from './interface/iproduct'
+import EditProduct from './components/editproduct'
 
 function App() {
   const [products,setProducts] = useState<Iproduct[]>([])
@@ -30,6 +31,7 @@ function App() {
           <Route path='/details/:id' Component={ProductDetail}/>
           <Route path='/products' element={<Products products={products} setProduct={setProducts}/>}/>
           <Route path='/post' Component={Post}/>
+          <Route path='/products/edit/:id' Component={EditProduct}/>
           {/* <Route path='lab' Component={Lab34}/> */}
        </Routes>
     </>
