@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ValidateProduct } from '../validator/product'
-import { Iproduct } from '../interface/iproduct'
+import { Iproduct, IproductLite } from '../interface/iproduct'
+import { AddProduct, DeleteProduct } from '../services/products'
 type Props = {
     products:Iproduct[],
     setProduct:(data:Iproduct[]) =>void
@@ -8,45 +9,40 @@ type Props = {
 const Products = ({products,setProduct}:Props) => {
     const [name,setName]= useState<string>('')
     const [image,setImage]= useState<string>('')
-    const [price,setPrice]= useState<number>(0)
+    const [price,setPrice]= useState<number>()
     const [message,setMessage]= useState<string>('')
    
-    const handleSubmit = (e:any)=>{
+    const handleSubmit = async(e:any)=>{
         e.preventDefault();
         const {error} = ValidateProduct.validate({name:name,image:image,price:price})
-        // console.log(error?.message);
         if (error){
             setMessage(error.message)
         }
         else{
-        fetch(`http://localhost:3000/products`,{
-            method: 'POST',
-            body: JSON.stringify({name,image,price})
-        }).then(response=>response.json())
-        .then((data:Iproduct)=>{
+            try {
+            const product:Iproduct = await AddProduct({name,image,price} as IproductLite)
             setMessage(`Thêm sản phẩm thành công`);
-            const newproducts = [...products,data];
+            const newproducts = [...products,product];
             setProduct(newproducts)
             setName('') 
             setImage('') 
-            setPrice(0)     
-        })
-        .catch(err=>{
-            // setMessage(`Lỗi ${err.message}`);
-            console.log(err);
-            
-        })
+            setPrice(0) 
+        } catch (error) {
+            setMessage(`Lỗi ${error}`);
+        }
     }
     }
-    const delProduct = (id:string) => {
+    const delProduct = async(id:string) => {
        if(window.confirm('Are you sure you want to delete this product?')){
-            fetch(`http://localhost:3000/products/${id}`,{method: 'DELETE'})
-            .then(response =>response.json())
-            .then((product:Iproduct)=>{
+            try {
+                const product:Iproduct = await DeleteProduct(id)
                 const newproducts = products.filter((product:Iproduct)=>product.id!==id)
                 setProduct(newproducts);
                 setMessage(`Xóa sản phẩm ${product.name} thành công!`)
-            })
+            } catch (error) {
+                console.log(error);
+                
+            }
        }
     }
   return (
@@ -77,7 +73,7 @@ const Products = ({products,setProduct}:Props) => {
                                 <td><img src={product.image}/></td>
                                 <td>{product.name}</td>
                                 <td>{product.price}</td>
-                                <td><a>Sửa</a><button onClick={()=>{delProduct(product.id)}}>Xóa</button></td>
+                                <td><a href={`/products/edit/${product.id}`}>Sửa</a><button onClick={()=>{delProduct(product.id)}}>Xóa</button></td>
                             </tr>
                         )
                     })

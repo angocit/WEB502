@@ -17,3 +17,4 @@ export type Iproduct = {
   image:string,
   price:number
 }
+export type IproductLite = Pick<Iproduct,'name'|'image'|'price'>

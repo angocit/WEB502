@@ -9,21 +9,19 @@ import Lab34 from './components/lab34'
 import { useEffect, useState } from 'react'
 import { Iproduct } from './interface/iproduct'
 import EditProduct from './components/editproduct'
+import { getAllProducts } from './services/products'
 
 function App() {
   const [products,setProducts] = useState<Iproduct[]>([])
-  const getProduct = ()=>{
-    fetch(`http://localhost:3000/products`)
-    .then(response=>response.json())
-    .then((data:Iproduct[])=>{
-        setProducts(data)           
-    })
-    .catch(err=>{
-        console.log(`Lỗi ${err.message}`);
-        
-    })
+  const getProduct = async ()=>{
+    const products:Iproduct[] = await getAllProducts();
+    setProducts(products)
   }
-  useEffect(getProduct,[])
+  useEffect(()=>{
+    (async()=>{
+      await getProduct()
+    })()
+  },[])
   return (
     <>
        <Routes>

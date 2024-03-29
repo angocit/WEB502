@@ -1,16 +1,22 @@
 {
   "products": [
     {
-      "name": "dsfsafdsaf edit 3 3",
-      "image": "edit",
-      "price": "1312312312",
-      "id": "e54d"
+      "name": "dfdsafsadf Edit 33333",
+      "image": "dsfaadsfads",
+      "price": "213123123",
+      "id": "764a"
     },
     {
-      "id": "764a",
-      "name": "dfdsafsadf",
-      "image": "dsfaadsfads",
-      "price": "213123123"
+      "id": "9a0f",
+      "name": "sadfadsfdsaf",
+      "image": "dsafasfsafadsf",
+      "price": "23423423"
+    },
+    {
+      "id": "4397",
+      "name": "sdafasdfadsf",
+      "image": "sdafsdafasdf",
+      "price": "3242423"
     }
   ],
   "posts": [

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ValidateProduct } from '../validator/product'
-import { Iproduct } from '../interface/iproduct'
+import { Iproduct, IproductLite } from '../interface/iproduct'
 import { useParams } from 'react-router-dom'
+import { UpdateProduct, getProductById } from '../services/products'
 
 type Props = {}
 
@@ -10,24 +11,30 @@ const EditProduct = (props: Props) => {
     const [image,setImage]= useState<string>('')
     const [price,setPrice]= useState<number>()
     const [message,setMessage]= useState<string>('')
-    const id = useParams().id
-    console.log(id)
+    // const id = useParams().id
+    // console.log(id)
+    const {id}:any = useParams()
     useEffect(()=>{
-        fetch(`http://localhost:3000/products/${id}`)
-        .then(response=>response.json())
-        .then((product:Iproduct)=>{
+        (async()=>{
+            try {
+            const product:Iproduct = await getProductById(id)
             setName(product.name)
             setImage(product.image)
             setPrice(product.price)
-        })
+        } catch (error) {
+              console.log(error);
+        }
+        })()
     },[])
-    const handleSubmit = (e:any)=>{
+    const handleSubmit = async (e:any)=>{
         e.preventDefault()
-        fetch(`http://localhost:3000/products/${id}`,{method: 'PUT',body:JSON.stringify({name,image,price})})
-        .then(response=>response.json())
-        .then((product:Iproduct)=>{
+        try {
+            const product:Iproduct = await UpdateProduct(id,{name,image,price} as IproductLite)
             setMessage(`Cập nhật sản phẩm ${product.name} thành công`)
-        })
+        } catch (error) {
+            console.log(error);
+            
+        }
     }
   return (
     <>
