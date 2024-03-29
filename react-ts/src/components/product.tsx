@@ -3,6 +3,7 @@ import Header from './header'
 import Footer from './footer'
 import { IProduct } from '../types/product'
 import {validateObj} from '../validate/product'
+import { DeleteProduct, addProduct } from '../services/product'
 
 type Props = {
     products:IProduct[],
@@ -15,7 +16,7 @@ const Product = (props: Props) => {
     const [price,setPrice]=useState<number>(0)
     const [message,setMessage]=useState<string>('')
     
-const handleSubmit = (e:any)=>{
+const handleSubmit = async(e:any)=>{
     e.preventDefault()
     console.log(name,image,price);
     const {error} = validateObj.validate({name,image,price})
@@ -23,35 +24,27 @@ const handleSubmit = (e:any)=>{
         setMessage(error.message)
     }
     else {
-    const option = {
-        method:'POST',
-        body: JSON.stringify({name,image,price})
-    }
-    fetch('http://localhost:3000/products',option)
-    .then(response=>response.json())
-    .then((data:IProduct)=>{
-        setMessage(`Thêm thành công`); 
-        const newproducts = [...props.products,data]   
+        try {
+        const dataproduct = await addProduct({name,image,price})
+        const newproducts = [...props.products,dataproduct]
         props.setProduct(newproducts)   
-    })
-    .catch((err:any) =>{
-        setMessage(`Thêm không thành công ${err.message}`);
-    })
+        setMessage(`Thêm thành công`);
+    } catch (error) {
+        setMessage(`Thêm không thành công ${error}`);
+    }
     }
 }
-const delProduct = (id:string)=>{
+const delProduct = async(id:string)=>{
     const confirm = window.confirm('Bạn có muốn xóa sản phẩm này không?')
     if (confirm){
-        fetch(`http://localhost:3000/products/${id}`,{method:'DELETE'})
-        .then(response=>response.json())
-        .then((product:IProduct)=>{
+        try {
+            const data = await DeleteProduct(id);
             const newproduct = props.products.filter((product:IProduct)=>product.id!==id)
             props.setProduct(newproduct)
             setMessage('Xóa thành công')
-        })
-        .catch(err=>{
+        } catch (error) {
             setMessage('Có lỗi khi xóa sản phẩm')
-        })
+        }
     }
 }
   return (
@@ -80,7 +73,7 @@ const delProduct = (id:string)=>{
                 {
                     props.products.map((product:IProduct,index:number)=>{
                         return (
-                            <tr>
+                            <tr key={product.id}>
                                 <td>{index+1}</td>
                                 <td>{product.image}</td>
                                 <td>{product.name}</td>

@@ -5,29 +5,26 @@ import Product from './components/product'
 import { useEffect, useState } from 'react'
 import { IProduct } from './types/product'
 import ProductEdit from './components/productedit'
+import { getAllProducts } from './services/product'
 
 function App() {
   const [products,setProduct]=useState<IProduct[]>([])
-  const getProduct = ()=>{
-    fetch(`http://localhost:3000/products`)
-    .then((response:any)=>response.json())
-    .then((product:IProduct[])=>{
-      console.log(`mangr sp`,product);
-      
-      setProduct(product)
-    })
-    .catch((error:any)=>{
-        console.log(`can not load product`);          
-    }) 
+  const getProduct =async ()=>{
+   try {
+      const dataproducts = await getAllProducts();
+      setProduct(dataproducts)
+   } catch (error) {
+    
+   }
   }
-  useEffect(getProduct,[])
+  useEffect(()=>{getProduct()},[products])
   return (
    <>
        <Routes>
           <Route path='/' Component={Home}/>
           <Route path='/products' element={<Product products={products} setProduct = {setProduct}/>}/>
           {/* <Route path='/products/edit/:id' element={<ProductEdit products={products} setProduct = {setProduct}/>}/> */}
-          <Route path='/products/edit/:id' element={<ProductEdit/>}/>
+          <Route path='/products/edit/:id' element={<ProductEdit products={products} setProduct = {setProduct}/>}/>
        </Routes>
    </>
   )

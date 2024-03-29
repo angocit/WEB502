@@ -1,45 +1,44 @@
 import React, { useEffect, useState } from 'react'
-import { IProduct } from '../types/product'
+import { IProduct, IproductLite } from '../types/product'
 import {validateObj} from '../validate/product'
 import Header from './header'
 import Footer from './footer'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { UpdateProduct, getAllProducts, getProductByID } from '../services/product'
 type Props = {
-    // products:IProduct[],
-    // setProduct:(data:IProduct[])=>void
+    products:IProduct[],
+    setProduct:(data:IProduct[])=>void
 }
-
 const ProductEdit = (props: Props) => {
     const [name,setName]=useState<string>('')
     const [image,setImage]=useState<string>('')
     const [price,setPrice]=useState<number>()
     const [message,setMessage]=useState<string>('')
     const params = useParams()
-    const id = params.id
+    const id:any = params.id
+    const navigate = useNavigate()
     useEffect(()=>{
-       //Danh sách sản phảm là props.products
-    //    const product = props.products.filter((product:IProduct)=>product.id==id)
-    //    console.log(`mang share`,props.products);
-    //    console.log(product);
-    fetch(`http://localhost:3000/products/${id}`)
-    .then(response=>response.json())
-    .then((productdata:IProduct)=>{
-        setName(productdata.name)
-        setImage(productdata.image)
-        setPrice(productdata.price)
-    }) 
-    .catch((error)=>{
-        console.log(error)
-    })
-         
+         (async()=>{
+            try {
+            const product = await getProductByID(id)  
+            setName(product.name)
+            setImage(product.image)
+            setPrice(product.price)              
+            } catch (error) {
+                console.log(`looix`);
+                
+            }
+         })()
     },[])
-    const handleSubmit = (e:any)=>{
+    const handleSubmit = async(e:any)=>{
         e.preventDefault();
-        fetch(`http://localhost:3000/products/${id}`,{method:'PUT',body:JSON.stringify({name,image,price})})
-        .then(response=>response.json())
-        .then((product:IProduct)=>{
-            setMessage(`Cập nhật sản phẩm ${product.name} thành công`)
-        })
+        const dataproduct = await UpdateProduct(id,{name,image,price} as IproductLite)
+        setMessage(`Cập nhật sản phẩm ${dataproduct.name} thành công`)
+        const newproduct = props.products.map((product:IProduct)=>(product.id===id)?dataproduct:product)
+        props.setProduct(newproduct)
+        setTimeout(()=>{
+            navigate('/products')
+        },2000)        
     }
   return (
     <>

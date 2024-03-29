@@ -4,3 +4,4 @@ export interface IProduct{
     image:string;
     price:number;
 }
+export type IproductLite = Pick<IProduct,'name'|'image'|'price'>;
