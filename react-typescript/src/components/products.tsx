@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ValidateProduct } from '../validator/product'
 import { Iproduct, IproductLite } from '../interface/iproduct'
-import { AddProduct, DeleteProduct } from '../services/products'
+import { AddProduct, DeleteProduct, UploadImage } from '../services/products'
+import { baseURL } from '../config/axiosconf'
 type Props = {
     products:Iproduct[],
     setProduct:(data:Iproduct[]) =>void
@@ -45,12 +46,21 @@ const Products = ({products,setProduct}:Props) => {
             }
        }
     }
+    const handleUpload = async (file:any)=>{
+        const formdata = new FormData();
+        formdata.append(file,file[0]);
+        const image = await UploadImage(formdata)
+        console.log(image);
+        const imgUrl = baseURL+`${image.image}`;
+        setImage(imgUrl);
+    }
   return (
     <div>
         {message}
         <form onSubmit={handleSubmit}>
             <input onChange={(e:any)=>{setName(e.target.value)}} type='text' placeholder='Tên sản phẩm' value={name}/>
-            <input onChange={(e:any)=>{setImage(e.target.value)}} type='text' placeholder='Ảnh sản phẩm' value={image}/>
+            {(image==='')?<></>:(<img src={image} width={100}/>)}
+            <input onChange={(e:any)=>{handleUpload(e.target.files)}} type='file' placeholder='Ảnh sản phẩm'/>
             <input onChange={(e:any)=>{setPrice(e.target.value)}} type='number' placeholder='Giá tiền' value={price}/>
             <button type='submit'>Thêm mới sản phẩm</button>
         </form>
