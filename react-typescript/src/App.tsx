@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { Iproduct } from './interface/iproduct'
 import EditProduct from './components/editproduct'
 import { getAllProducts } from './services/products'
+import UserLogin from './components/login'
 
 function App() {
   const [products,setProducts] = useState<Iproduct[]>([])
@@ -26,6 +27,7 @@ function App() {
     <>
        <Routes>
           <Route path='/' Component={Home}/>
+          <Route path='/login' Component={UserLogin}/>
           <Route path='/details/:id' Component={ProductDetail}/>
           <Route path='/products' element={<Products products={products} setProduct={setProducts}/>}/>
           <Route path='/post' Component={Post}/>
