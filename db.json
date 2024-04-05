@@ -1,3 +1,59 @@
 {
-    "users":[]
+  "users": [
+    {
+      "email": "angocit@gmail.com",
+      "password": "$2a$10$Cb5Po3NKozO3gIGANdg8O.pXMzi15dK6vPrzArhLauftqgDwaqv0u",
+      "name": "Ngoc",
+      "id": 1
+    },
+    {
+      "email": "332@sdfds.com",
+      "password": "$2a$10$SW1F5Q33ETJ.Q1YT3MM1kew8QIjZPJLdn7arSN6ISo19Z0UXSu9Ie",
+      "name": "ds",
+      "id": 2
+    },
+    {
+      "email": "angocit33@gmail.com",
+      "password": "$2a$10$J73afWPnDoM9v/2BkH5SIO1QjAAlmPUd2i4y.sN87OGYuJDrjYBNG",
+      "name": "ádfasfadsf",
+      "id": 3
+    }
+  ],
+  "students": [
+    {
+      "name": "sdfasdfadsfas edit",
+      "age": "1213",
+      "email": "angocit@gmail.com",
+      "phone": "fdgfsgs435",
+      "id": 1
+    },
+    {
+      "name": "sdfssdfasf sà",
+      "age": "10",
+      "email": "angocit@gmail.com",
+      "phone": "12312312",
+      "id": 2
+    },
+    {
+      "name": "Ngọc 2 3đfsdf",
+      "age": "111",
+      "email": "angocit@gmail.com",
+      "phone": "123232",
+      "id": 3
+    },
+    {
+      "name": "sdfasfadsf",
+      "age": "234",
+      "email": "angocit@gmail.com",
+      "phone": "32423423",
+      "id": 4
+    },
+    {
+      "name": "adsfasdfasdf ads",
+      "age": "3223",
+      "email": "angocit@gmail.com",
+      "phone": "3423423",
+      "id": 5
+    }
+  ]
 }
