@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import AddTodoCPN from './components/addTodo'
+import { Route, Routes } from 'react-router-dom'
+import Home from './components/home'
+import Detail from './components/details'
 export interface ITodo{
   id:number,
   title:string,
@@ -29,13 +32,10 @@ function App() {
   }
   return (
     <> 
-      <AddTodoCPN addtodo={AddTodo2} title='Thêm mới công việc 23123' action='Thêm mới'/>
-      <h1>Danh sách công việc</h1>
-      <ul>
-        {todos.map(todo=>
-         <li>{todo.title} <button onClick={()=>onDelete(todo.id)}>Xóa</button></li>
-        )}
-      </ul>
+      <Routes>
+         <Route path='home' element={<Home todos={todos}/>}/>
+         <Route path='detail' Component={Detail}/>
+      </Routes>
     </>
   )
 }
