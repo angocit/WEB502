@@ -29,7 +29,7 @@ function App() {
     <> 
       <Routes>
          <Route path='' element={<Home products={products}/>}/>
-         <Route path='detail' Component={Detail}/>
+         <Route path='detail/:id' Component={Detail}/>
       </Routes>
     </>
   )
