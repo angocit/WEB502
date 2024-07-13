@@ -1,29 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { ITodo } from '../App'
+import { IProduct } from '../interface/product'
 
 type Props = {
-    todos:ITodo[]
+  products:IProduct[]
 }
 
-const Home = ({todos}: Props) => {
-    const [count,setCount] = useState<number>(0)
-    const [count2,setCount2] = useState<number>(5)
-    useEffect(()=>{
-        console.log(`Render ${count}`);
-        
-    },[])
+const Home = ({products}: Props) => {
   return (
     <>
-    Số 1: {count} <br></br>
-    Số 2: {count2} <br></br>
-    <button onClick={()=>setCount(count+1)}>Tăng</button>
-    <button onClick={()=>setCount2(count2+1)}>Tăng Count2</button>
-      <h1>Danh sách công việc</h1>
-      <ul>
-        {todos.map(todo=>
-         <li>{todo.title} id: {todo.id} <button>Xóa</button></li>
-        )}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Ảnh sản phẩm</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá tiền</th>
+            <th>Mô tả</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+        {products.map((product,index)=>(
+          <tr key={product.id}>
+              <td>{index+1}</td>
+              <td><img src={product.image}/></td>
+              <td>{product.name}</td>
+              <td>{product.price}</td>
+              <td>{product.description}</td>
+              <td><button>Sửa</button><button>Xóa</button></td>
+          </tr>
+        ))}
+        </tbody>
+       </table>
     </>
   )
 }
