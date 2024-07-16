@@ -3,10 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import AddTodoCPN from './components/addTodo'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import Home from './components/home'
 import Detail from './components/details'
-import { IProduct } from './interface/product'
+import { formData, IProduct } from './interface/product'
 import AddProduct from './components/addproduct'
 export interface ITodo{
   id:number,
@@ -16,6 +16,7 @@ export interface ITodo{
 function App() {
   // Tạo state để lưu danh sách sản phẩm:
   const [products,setProducts] = useState<IProduct[]>([])
+  const navigate = useNavigate()
   useEffect(()=>{
       fetch('http://localhost:3000/products').then(response=>response.json()).then(
         (data:IProduct[])=>{
@@ -26,11 +27,24 @@ function App() {
         
       })
   },[])
+  const onAdd =(dataproduct:formData)=>{
+      fetch('http://localhost:3000/products',{
+        method: 'POST',
+        body:JSON.stringify(dataproduct),
+        headers:{'Content-type':'application/json'}
+      }).then(res=>res.json())
+      .then(product=>{
+          const newproduct = [...products,product]
+          setProducts(newproduct)
+          alert('Thêm mới thành công')
+          navigate('/') 
+      })
+  }
   return (
     <> 
       <Routes>
          <Route path='' element={<Home products={products}/>}/>
-         <Route path='products' element={<AddProduct/>}/>
+         <Route path='product/add' element={<AddProduct onAdd={onAdd}/>}/>
          <Route path='detail/:id' Component={Detail}/>
       </Routes>
     </>
