@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './components/home'
 import Detail from './components/details'
 import { IProduct } from './interface/product'
+import AddProduct from './components/addproduct'
 export interface ITodo{
   id:number,
   title:string,
@@ -29,6 +30,7 @@ function App() {
     <> 
       <Routes>
          <Route path='' element={<Home products={products}/>}/>
+         <Route path='products' element={<AddProduct/>}/>
          <Route path='detail/:id' Component={Detail}/>
       </Routes>
     </>
