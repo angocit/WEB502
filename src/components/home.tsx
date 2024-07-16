@@ -3,10 +3,11 @@ import { ITodo } from '../App'
 import { IProduct } from '../interface/product'
 
 type Props = {
-  products:IProduct[]
+  products:IProduct[],
+  onDelete:(id:string|number) => void
 }
 
-const Home = ({products}: Props) => {
+const Home = ({products,onDelete}: Props) => {
   return (
     <>
       <table>
@@ -28,7 +29,7 @@ const Home = ({products}: Props) => {
               <td>{product.name}</td>
               <td>{product.price}</td>
               <td>{product.description}</td>
-              <td><button>Sửa</button><button>Xóa</button></td>
+              <td><button>Sửa</button><button onClick={()=>onDelete(product.id)}>Xóa</button></td>
           </tr>
         ))}
         </tbody>

@@ -40,10 +40,21 @@ function App() {
           navigate('/') 
       })
   }
+  const onDelete = (id:number|string)=>{
+    if (confirm('Bạn chắc chứ?')){
+    fetch(`http://localhost:3000/products/${id}`,{method:'DELETE'})
+    .then(res=>res.json())
+    .then(product=>{
+      alert('Xóa thành công')
+      const newproducts = products.filter(product=>product.id!==id)
+      setProducts(newproducts)
+    })
+  }
+  }
   return (
     <> 
       <Routes>
-         <Route path='' element={<Home products={products}/>}/>
+         <Route path='' element={<Home onDelete={onDelete} products={products}/>}/>
          <Route path='product/add' element={<AddProduct onAdd={onAdd}/>}/>
          <Route path='detail/:id' Component={Detail}/>
       </Routes>
