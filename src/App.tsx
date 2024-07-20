@@ -9,6 +9,8 @@ import Detail from './components/details'
 import { formData, IProduct } from './interface/product'
 import AddProduct from './components/addproduct'
 import EditProduct from './components/editproduct'
+import Register from './components/register'
+import Login from './components/login'
 export interface ITodo{
   id:number,
   title:string,
@@ -72,6 +74,8 @@ function App() {
          <Route path='product/add' element={<AddProduct onAdd={onAdd}/>}/>
          <Route path='product/edit/:id' element={<EditProduct onEdit={onEdit}/>}/>
          <Route path='detail/:id' Component={Detail}/>
+         <Route path='register' Component={Register}/>
+         <Route path='login' Component={Login}/>
       </Routes>
     </>
   )

@@ -64,5 +64,18 @@
       "id": 11
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "angocit@gmail.com",
+      "password": "$2a$10$dkvxCCt4oCd0aE3DO1cIZ.NhJwci05sjBY/epScGHd8VlPWFPR2s.",
+      "name": "Ngọc",
+      "id": 1
+    },
+    {
+      "email": "angocit2@gmail.com",
+      "password": "$2a$10$G7Ctpi9uS/TmK2EeYVisKe5S6bip5DrjsjLfDHCBY1tjJYTEP2JJq",
+      "name": "Giày nữ ABC",
+      "id": 2
+    }
+  ]
 }
