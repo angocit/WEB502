@@ -8,6 +8,7 @@ import Home from './components/home'
 import Detail from './components/details'
 import { formData, IProduct } from './interface/product'
 import AddProduct from './components/addproduct'
+import EditProduct from './components/editproduct'
 export interface ITodo{
   id:number,
   title:string,
@@ -51,11 +52,25 @@ function App() {
     })
   }
   }
+  const onEdit = (dataproduct:formData,id:number|string)=>{
+    fetch('http://localhost:3000/products/'+id,{
+      method: 'PUT',
+      body:JSON.stringify(dataproduct),
+      headers:{'Content-type':'application/json'}
+    }).then(res=>res.json())
+    .then(resproduct=>{
+        const newproduct = products.map(product=>(product.id==id)?resproduct:product)
+        setProducts(newproduct)
+        alert('Cập nhật thành công')
+        navigate('/') 
+    })
+  }
   return (
     <> 
       <Routes>
          <Route path='' element={<Home onDelete={onDelete} products={products}/>}/>
          <Route path='product/add' element={<AddProduct onAdd={onAdd}/>}/>
+         <Route path='product/edit/:id' element={<EditProduct onEdit={onEdit}/>}/>
          <Route path='detail/:id' Component={Detail}/>
       </Routes>
     </>

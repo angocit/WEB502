@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ITodo } from '../App'
 import { IProduct } from '../interface/product'
+import { Link } from 'react-router-dom'
 
 type Props = {
   products:IProduct[],
@@ -29,7 +30,7 @@ const Home = ({products,onDelete}: Props) => {
               <td>{product.name}</td>
               <td>{product.price}</td>
               <td>{product.description}</td>
-              <td><button>Sửa</button><button onClick={()=>onDelete(product.id)}>Xóa</button></td>
+              <td><Link to={`/product/edit/${product.id}`}>Sửa</Link><button onClick={()=>onDelete(product.id)}>Xóa</button></td>
           </tr>
         ))}
         </tbody>
