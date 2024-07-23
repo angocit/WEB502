@@ -20,7 +20,8 @@ const Register = () => {
             }  
             else throw new Error('Lỗi')        
         })
-        .then(data=>{          
+        .then(data=>{
+            // console.log(data);            
             alert('Đăng ký thành công')
             navigate('/login')
         }).catch(err=>{
