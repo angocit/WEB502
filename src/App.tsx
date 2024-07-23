@@ -53,7 +53,8 @@ function App() {
       // })
       try {
         const {data} = await axios.post('http://localhost:3000/products',dataproduct);
-        setProducts(data)
+        const newproduct = [...products,data]
+        setProducts(newproduct)
         alert('Thêm mới thành công')
         navigate('/') 
       } catch (error) {
