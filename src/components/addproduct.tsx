@@ -18,9 +18,8 @@ const AddProduct = ({onAdd}: Props) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <input type='text' {...register("name",{required:true,minLength:6})} placeholder='Tên sản phẩm'/> <br/>
             {(errors.name) && 
-            <p>Tên không được để trống</p>
+            <p>Tên không được để trống và nhỏ hơn 6 kí tự</p>
             }
-
             <input type='text' {...register("image",{required:true})} placeholder='Ảnh sản phẩm'/> <br/>            
             {(errors.image) && 
             <p>Ảnh không được để trống</p>

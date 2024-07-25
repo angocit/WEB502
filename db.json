@@ -76,6 +76,12 @@
       "password": "$2a$10$G7Ctpi9uS/TmK2EeYVisKe5S6bip5DrjsjLfDHCBY1tjJYTEP2JJq",
       "name": "Giày nữ ABC",
       "id": 2
+    },
+    {
+      "email": "ngocnv34@gmail.com",
+      "password": "$2a$10$MJd/KKmbF00SVv9FIvhgHu4bFMJV7ERGekDwQLkyX03h304pDK3y2",
+      "name": "sdfsdfsdf",
+      "id": 3
     }
   ]
 }
