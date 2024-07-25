@@ -12,6 +12,7 @@ import EditProduct from './components/editproduct'
 import Register from './components/register'
 import Login from './components/login'
 import axios from 'axios'
+import { api } from './config/axios'
 export interface ITodo{
   id:number,
   title:string,
@@ -22,17 +23,9 @@ function App() {
   const [products,setProducts] = useState<IProduct[]>([])
   const navigate = useNavigate()
   useEffect(()=>{
-      // fetch('http://localhost:3000/products').then(response=>response.json()).then(
-      //   (data:IProduct[])=>{
-      //     setProducts(data)
-      //   }
-      // ).catch(error=>{
-      //   console.log(error);
-        
-      // })
       (async ()=>{
         try {
-          const {data} = await axios.get('http://localhost:3000/products')
+          const {data} = await api.get('products')
           setProducts(data)
         } catch (error) {
           console.log(error);          
@@ -40,19 +33,8 @@ function App() {
       })()
   },[])
   const onAdd = async (dataproduct:formData)=>{
-      // fetch('http://localhost:3000/products',{
-      //   method: 'POST',
-      //   body:JSON.stringify(dataproduct),
-      //   headers:{'Content-type':'application/json'}
-      // }).then(res=>res.json())
-      // .then(product=>{
-      //     const newproduct = [...products,product]
-      //     setProducts(newproduct)
-      //     alert('Thêm mới thành công')
-      //     navigate('/') 
-      // })
       try {
-        const {data} = await axios.post('http://localhost:3000/products',dataproduct);
+        const {data} = await api.post('products',dataproduct);
         const newproduct = [...products,data]
         setProducts(newproduct)
         alert('Thêm mới thành công')
@@ -65,16 +47,8 @@ function App() {
   }
   const onDelete = async (id:number|string)=>{
     if (confirm('Bạn chắc chứ?')){
-    // fetch(`http://localhost:3000/products/${id}`,{method:'DELETE'})
-    // .then(res=>res.json())
-    // .then(product=>{
-    //   alert('Xóa thành công')
-    //   const newproducts = products.filter(product=>product.id!==id)
-    //   setProducts(newproducts)
-    // })
-    // const {data} 
     try {
-        const {data} = await axios.delete(`http://localhost:3000/products/${id}`)
+        const {data} = await api.delete(`products/${id}`)
         alert('Xóa thành công')
         const newproducts = products.filter(product=>product.id!==id)
         setProducts(newproducts)
@@ -84,19 +58,8 @@ function App() {
   }
   }
   const onEdit = async (dataproduct:formData,id:number|string)=>{
-    // fetch('http://localhost:3000/products/'+id,{
-    //   method: 'PUT',
-    //   body:JSON.stringify(dataproduct),
-    //   headers:{'Content-type':'application/json'}
-    // }).then(res=>res.json())
-    // .then(resproduct=>{
-    //     const newproduct = products.map(product=>(product.id==id)?resproduct:product)
-    //     setProducts(newproduct)
-    //     alert('Cập nhật thành công')
-    //     navigate('/') 
-    // })
     try {
-        const {data} = await axios.put('http://localhost:3000/products/'+id,dataproduct)
+        const {data} = await api.put('products/'+id,dataproduct)
         const newproduct = products.map(product=>(product.id==id)?data:product)
         setProducts(newproduct)
         alert('Cập nhật thành công')

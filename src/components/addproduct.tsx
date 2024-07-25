@@ -8,29 +8,28 @@ type Props = {
 }
 
 const AddProduct = ({onAdd}: Props) => {
-    const {register,handleSubmit} = useForm<formData>()
+    const {register,handleSubmit,formState:{errors}} = useForm<formData>()
     const onSubmit = (data:formData)=>{
         onAdd(data)        
-        // fetch("http://localhost:3000/products",{
-        //     method: "POST",
-        //     body:JSON.stringify(data),
-        //     headers:{'Content-type': 'application/json'}
-        // }).then(res=>res.json())
-        // .then(data=>{
-        //     console.log(data);
-        //     alert("Thêm mới thành công")
-        //     navigate('/')
-        // }).catch(err=>console.log(err)
-        // )
     }
   return (
     <>
         <h1>THêm mới sản phẩm</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input type='text' {...register("name")}/> <br/>
-            <input type='text' {...register("image")}/> <br/>
-            <input type='text' {...register("description")}/> <br/>
-            <input type='number' {...register("price")}/> <br/>
+            <input type='text' {...register("name",{required:true,minLength:6})} placeholder='Tên sản phẩm'/> <br/>
+            {(errors.name) && 
+            <p>Tên không được để trống</p>
+            }
+
+            <input type='text' {...register("image",{required:true})} placeholder='Ảnh sản phẩm'/> <br/>            
+            {(errors.image) && 
+            <p>Ảnh không được để trống</p>
+            }
+            <input type='number' {...register("price",{required:true,min:0})} placeholder='Giá sản phẩm'/> <br/>
+            {(errors.price) &&
+             <p>Giá không âm</p>
+             }
+            <input type='text' {...register("description")} placeholder='Mô tả'/> <br/>
             <button type='submit'>Thêm mới</button>
         </form>
     </>

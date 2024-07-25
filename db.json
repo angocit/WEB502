@@ -15,13 +15,6 @@
       "id": 2
     },
     {
-      "id": 3,
-      "name": "Product 3",
-      "image": "image3.jpg",
-      "price": 300,
-      "description": "This is product 3"
-    },
-    {
       "id": 4,
       "name": "Product 4",
       "image": "image4.jpg",
@@ -34,20 +27,6 @@
       "image": "image5.jpg",
       "price": 500,
       "description": "This is product 5"
-    },
-    {
-      "name": "Giày nữ ABC",
-      "image": "https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Apro/Apro_product_25081/dong-ho-treo-tu_main_946_1020.png.webp",
-      "category": "dsfsd",
-      "price": "323232",
-      "id": 8
-    },
-    {
-      "name": "sdfasdfads",
-      "image": "23423432",
-      "category": "sdfsdf",
-      "price": "324234",
-      "id": 9
     },
     {
       "name": "kjsafhakjsfhskjafh kjsahf",
@@ -64,18 +43,25 @@
       "id": 11
     },
     {
-      "name": "dsfdsf",
-      "image": "34234",
-      "description": "23423",
-      "price": "23423",
-      "id": 12
-    },
-    {
       "name": "234234dsafadsf",
       "image": "dsfsdfds",
       "description": "4234",
       "price": "234234",
       "id": 13
+    },
+    {
+      "name": "Mới",
+      "image": "sdfdsaf",
+      "description": "2342",
+      "price": "2323",
+      "id": 14
+    },
+    {
+      "name": "dsfdsafdsf sdfdsf",
+      "image": "dfsafdsafasd",
+      "price": "10000",
+      "description": "sdfsdfds",
+      "id": 15
     }
   ],
   "users": [
