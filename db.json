@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "name": "sdafasdfsdafadsf",
+      "image": "https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Apro/Apro_product_25081/dong-ho-treo-tu_main_946_1020.png.webp",
+      "price": "100000",
+      "description": "Hoàng Phát",
+      "category": "1",
+      "id": 1
+    },
+    {
+      "name": "sdafadsfads",
+      "image": "sdafadsf",
+      "price": "2323",
+      "description": "dsafdasf",
+      "category": "dsafadsfads",
+      "id": 2
+    },
+    {
+      "name": "dfsdafasd",
+      "image": "dsfasdf",
+      "price": "34234",
+      "description": "sdfds",
+      "category": "sdfsd",
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "email": "angocit@gmail.com",
+      "password": "$2a$10$Y5W8znan5hscFe57RPywzeTIbMfC9soRXD5c/5pDoalHbwiLLZgmC",
+      "name": "sdafas",
+      "id": 1
+    }
+  ]
+}
