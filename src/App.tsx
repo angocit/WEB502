@@ -3,15 +3,21 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { IProduct } from './interface/product'
+import axios from 'axios'
 function App() {
   const [count, setCount] = useState<number>(0)
   const [products,setProduct]= useState<IProduct[]>([])
   useEffect(()=>{
-      const response = fetch(`http://localhost:3000/products`)
-      response.then(res=>res.json())
-      .then((products:IProduct[])=>{
-          setProduct(products)
-      })
+      // const response = fetch(`http://localhost:3000/products`)
+      // response.then(res=>res.json())
+      // .then((products:IProduct[])=>{
+      //     setProduct(products)
+      // })
+      const get_products = async ()=>{
+        const {data} = await axios.get(`http://localhost:3000/products`)
+        setProduct(data)
+      }
+      get_products() 
   },[])
   return (
     <>
