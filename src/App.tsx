@@ -1,0 +1,47 @@
+import { useEffect, useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { IProduct } from './interface/product'
+function App() {
+  const [count, setCount] = useState<number>(0)
+  const [products,setProduct]= useState<IProduct[]>([])
+  useEffect(()=>{
+      const response = fetch(`http://localhost:3000/products`)
+      response.then(res=>res.json())
+      .then((products:IProduct[])=>{
+          setProduct(products)
+      })
+  },[])
+  return (
+    <>
+      <h1>Danh sách sản phẩm</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên sản phẩm</th>
+            <th>Ảnh</th>
+            <th>Giá tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            products.map((item,index)=>
+            (
+              <tr>
+                <td>{index+1}</td>
+                <td>{item.name}</td>
+                <td>{item.image}</td>
+                <td>{item.price}</td>
+              </tr>
+            )
+            )
+          }
+      </tbody>
+      </table>
+    </>
+  )
+}
+
+export default App

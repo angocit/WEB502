@@ -1,0 +1,10 @@
+{
+    "products":[
+        {
+            "id":1,
+            "name":"Sản phẩm 1",
+            "image":"Link ảnh",
+            "price":100000
+        }
+    ]
+}
