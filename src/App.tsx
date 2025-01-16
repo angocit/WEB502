@@ -4,50 +4,18 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { IProduct } from './interface/product'
 import axios from 'axios'
+import { useRoutes } from 'react-router-dom'
+import Home from './components/home'
+import AddProduct from './components/addproduct'
+import EditProduct from './components/editproduct'
 function App() {
-  const [count, setCount] = useState<number>(0)
-  const [products,setProduct]= useState<IProduct[]>([])
-  useEffect(()=>{
-      // const response = fetch(`http://localhost:3000/products`)
-      // response.then(res=>res.json())
-      // .then((products:IProduct[])=>{
-      //     setProduct(products)
-      // })
-      const get_products = async ()=>{
-        const {data} = await axios.get(`http://localhost:3000/products`)
-        setProduct(data)
-      }
-      get_products() 
-  },[])
-  return (
-    <>
-      <h1>Danh sách sản phẩm</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>STT</th>
-            <th>Tên sản phẩm</th>
-            <th>Ảnh</th>
-            <th>Giá tiền</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            products.map((item,index)=>
-            (
-              <tr>
-                <td>{index+1}</td>
-                <td>{item.name}</td>
-                <td>{item.image}</td>
-                <td>{item.price}</td>
-              </tr>
-            )
-            )
-          }
-      </tbody>
-      </table>
-    </>
-  )
+    // Khai báo routes
+    const routes = useRoutes([
+      {path:'/',element:<Home/>},
+      {path:'/product-add',element:<AddProduct/>},
+      {path:'/product-edit/:id',element:<EditProduct/>}
+    ])
+    return routes
 }
 
 export default App

@@ -4,3 +4,4 @@ export interface IProduct {
   image: string;
   price: number;
 }
+export type IProductFormm = Omit<IProduct,"id">
