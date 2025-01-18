@@ -15,7 +15,7 @@ const OrderList = (props: Props) => {
         get_orders() 
     },[])
     const DoanhThu = (orders:IOrder[]):number=>{
-        const tong:number = orders.reduce((value:number,item:IOrder)=>value+(item.price*item.quantity),0)        
+        const tong = orders.reduce((value:number,item:IOrder)=>value+(item.price*item.quantity),0)        
         return tong
     }
     return (
