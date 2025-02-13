@@ -45,7 +45,7 @@ const Home = (props: Props) => {
             </thead>
             <tbody>
                 {products.map((product,index)=>(
-                    <tr>
+                    <tr key={product.id}>
                         <td>{index+1}</td>
                         <td><img width={90} src={product.image}/></td>
                         <td>{product.name}</td>

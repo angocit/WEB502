@@ -11,6 +11,11 @@
       "image": "",
       "price": "",
       "id": 4
+    },
+    {
+      "name": "Ngọc",
+      "email": "",
+      "id": 5
     }
   ],
   "orders": [
@@ -25,6 +30,16 @@
       "price": "2",
       "quantity": "10000",
       "id": 2
+    }
+  ],
+  "users": [
+    {
+      "email": "ngocnv34@fpt.edu.vn",
+      "password": "$2a$10$ZBLKlCuYNAqT.7i0O4AMY.JeCZCmM2Nl2IUWZUVL2/P09kHfJUDYO",
+      "name": "Ngọc",
+      "phone": "0989898989",
+      "repassword": "123456",
+      "id": 1
     }
   ]
 }
