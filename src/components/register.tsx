@@ -29,7 +29,7 @@ const Register = (props: Props) => {
            {(errors.email)&&<span className='text-red-600 text-[12px]'>Email không đúng định dạng</span>}
            <input type='text' placeholder='Số điện thoại' {
             ...register("phone",{
-                pattern:/^0+[0-9]{9}$/
+                pattern:/^(0+[0-9]{9}|\+84+[0-9]{9})$/
             })
            } />
             {(errors.phone)&&<span className='text-red-600 text-[12px]'>Số điện thoại không đúng định dạng</span>}
