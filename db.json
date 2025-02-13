@@ -1,22 +1,16 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Sản phẩm 1",
-      "image": "Link ảnh",
-      "price": 100000
-    },
-    {
-      "name": "Sản phẩm 2",
-      "image": "https://img.muji.net/img/item/4550344275726_1260.jpg",
-      "price": "100000",
-      "id": 2
-    },
-    {
-      "name": "Sản phẩm 3",
+      "name": "Sản phẩm 3 update 2",
       "image": "https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Apro/Apro_product_25081/dong-ho-treo-tu_main_946_1020.png.webp",
-      "price": "11111",
+      "price": "20000",
       "id": 3
+    },
+    {
+      "name": "dfdsfsdfsdfds",
+      "image": "",
+      "price": "",
+      "id": 4
     }
   ],
   "orders": [

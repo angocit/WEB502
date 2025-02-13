@@ -1,52 +1,65 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { IProduct } from '../interface/product'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 type Props = {}
 
 const Home = (props: Props) => {
-    const [count, setCount] = useState<number>(0)
-    const [products,setProduct]= useState<IProduct[]>([])
+    const [products,SetProduct]= useState<IProduct[]>([])
     useEffect(()=>{
-        // const response = fetch(`http://localhost:3000/products`)
-        // response.then(res=>res.json())
-        // .then((products:IProduct[])=>{
-        //     setProduct(products)
-        // })
-        const get_products = async ()=>{
-          const {data} = await axios.get(`http://localhost:3000/products`)
-          setProduct(data)
-        }
-        get_products() 
-    },[])
-    return (
-      <>
-        <h1>Danh sách sản phẩm</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Tên sản phẩm</th>
-              <th>Ảnh</th>
-              <th>Giá tiền</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              products.map((item,index)=>
-              (
-                <tr>
-                  <td>{index+1}</td>
-                  <td>{item.name}</td>
-                  <td>{item.image}</td>
-                  <td>{item.price}</td>
-                </tr>
-              )
-              )
+        const get_Products = async()=>{
+            try {
+                const {data} = await axios.get(`http://localhost:3000/products`)
+                SetProduct(data)
+            } catch (error) {
+                console.log(error);                
             }
-        </tbody>
+        }
+        get_Products()
+    },[])
+    const delProduct = async (id:number|string)=>{
+        try {
+            if (confirm("Bạn chắc chứ?")){
+                await axios.delete(`http://localhost:3000/products/${id}`)
+                alert('Xóa thành công')
+                const newproducts = products.filter(product=>product.id!=id)
+                SetProduct(newproducts)
+            }
+        } catch (error) {
+            console.log(error);            
+        }
+    }
+  return (
+    <div className='max-w-2xl mx-auto'>
+        <h1 className='font-bold text-[24px] text-center mt-4'>Danh sách sản phẩm</h1>
+        <table className='border w-full [&_td]:border [&_th]:border mt-6'>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá tiền</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {products.map((product,index)=>(
+                    <tr>
+                        <td>{index+1}</td>
+                        <td><img width={90} src={product.image}/></td>
+                        <td>{product.name}</td>
+                        <td>{product.price}</td>
+                        <td>
+                            <Link className='bg-green-700 text-white px-4 py-1 rounded' to={`/product-edit/${product.id}`}>Sửa</Link>
+                            <button onClick={()=>delProduct(product.id)} className='bg-red-700 text-white px-4 py-1 rounded'>Xóa</button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
-      </>
-    )
+    </div>
+  )
 }
 
 export default Home

@@ -1,7 +1,7 @@
 export interface IProduct {
-  id: number | string;
-  name: string;
-  image: string;
-  price: number;
+  id:string|number,
+  name:string,
+  price:number,
+  image:string
 }
-export type IProductFormm = Omit<IProduct,"id">
+export type IProductForm = Omit<IProduct,"id">
