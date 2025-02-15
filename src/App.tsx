@@ -7,16 +7,22 @@ import Home from './components/home'
 import EditProduct from './components/editproduct'
 import Register from './components/register'
 import Login from './components/login'
+import AdminLayout from './layout/admin'
+import Dashboard from './layout/admin/dashboard'
 function App() {
     // Khai báo routes
     const routes = useRoutes([
       {path:'/order-add',element:<OrderAdd/>},
-      {path:'/order-list',element:<OrderList/>},
-      {path:'/product-add',element:<AddProduct/>},
+      {path:'/order-list',element:<OrderList/>},      
       {path:'/register',element:<Register/>},
       {path:'/login',element:<Login/>},
       {path:'/',element:<Home/>},
-      {path:'/product-edit/:id',element:<EditProduct/>}
+      {path:'/product-edit/:id',element:<EditProduct/>},
+      {path:'dashboard',element:<AdminLayout/>,children:[
+        {path:'',element:<Dashboard/>},
+        {path:'product-add',element:<AddProduct/>},
+        // {path:'/product-edit/:id',element:<EditProduct/>}
+      ]}
     ])
     return routes
 }
