@@ -1,0 +1,76 @@
+import { useEffect, useState } from 'react'
+import './App.css'
+import axios from 'axios';
+interface IProduct{
+  id:number,
+  name:string,
+  image:string,
+  price:number
+}
+interface IPhoto{
+  albumId:number;
+  id:number;
+  title:string;
+  url:string;
+  thumbnailUrl:string
+}
+function App() {
+  const [photos,setPhoto] = useState<IPhoto[]>([])
+  useEffect(()=>{
+    const getPhoto = async ()=>{
+        const {data} = await axios.get('https://jsonplaceholder.typicode.com/photos')
+        // console.log(data);
+        const photolist = data.slice(0,20)
+        console.log(photolist);
+        setPhoto(photolist)        
+      }
+      getPhoto()
+  },[])
+  const number:number = 10
+  const text:string = 'Xin chào các bạn'
+  const isActive:boolean = true
+// Sử dụng mảng
+  const arrNumber:number[] = [7,8,10,20]
+  const arrText:string[] = ['Xin chào các bạn','Hello world','Hôm nay trời nắng']
+  const product:IProduct = {
+            id:1,
+            name:"Sản phẩm A",
+            image:"https://product.hstatic.net/1000123703/product/dong_ho_big_quartz_1024x1024.jpg",
+            price:1000
+        }
+  return (
+    <div>
+       Số là: {number}
+       chữ là: {text}
+       <h2>Danh sách số là</h2>
+       {arrNumber.map((item,index)=>
+      (
+        <p>{item}</p>
+      )
+      )}
+      <h2>Danh sách chữ là</h2>
+       {arrText.map((item,index)=>
+      (
+        <p>{item}</p>
+      )
+      )}
+      <h2>Sản phẩm là</h2>
+      <div>
+        <img src={product.image}/>
+        <h3>{product.name}</h3>
+        <span>{product.price}</span>
+      </div>
+      <h2>Danh sách ảnh là</h2>
+      {
+        photos.map((item,index)=>(
+          <div>
+              <img src={item.thumbnailUrl}/>
+              <h4>{item.title}</h4>
+          </div>
+        ))
+      }
+    </div>
+  )
+}
+
+export default App
