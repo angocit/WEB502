@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProductAdd = () => {
   return (
-    <div>Thêm mới sản phẩm</div>
+    <div>Đây là trang Thêm mới sản phẩm</div>
   )
 }
 
