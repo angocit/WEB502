@@ -15,16 +15,18 @@ function App() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/products">Danh sách</Nav.Link>
-            <Nav.Link href="/products">Thêm</Nav.Link>
+            <Nav.Link href="/products/add">Thêm</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    <Container>
     <Routes>
       <Route path='' Component={Home}/>
       <Route path='products' Component={Products}/>
       <Route path='products/add' Component={ProductAdd}/>
     </Routes>
+    </Container>
     </>
   )
 }

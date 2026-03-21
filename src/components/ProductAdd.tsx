@@ -15,23 +15,23 @@ const ProductAdd = () => {
     }
   }
   return (
-    <div>
+    <div className='w-50 container'>
     <h1>Thêm mới sản phẩm</h1>
-    <form  onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          Tên sản phẩm
-          <input {...register("name")} type='text' className='form-control'/>
-        </label>
-        <label>
-          Ảnh sản phẩm
-          <input {...register("image")} type='text' className='form-control'/>
-        </label>
-        <label>
-          Giá tiền
-          <input {...register("price")} type='text' className='form-control'/>
-        </label>
-        <button className='btn btn-primary'>Thêm mới sản phẩm</button>
-    </form>
+    <form onSubmit={handleSubmit(onSubmit)}>
+  <div className="form-group">
+    <label>Tên sản phẩm</label>
+    <input {...register("name")} type='text' className="form-control" placeholder="Nhập tên"/>
+     </div>
+  <div className="form-group">
+    <label>Ảnh sản phẩm</label>
+    <input {...register("image")} type="text" className="form-control" placeholder="Nhập ảnh"/>
+     </div>
+    <div className="form-group">
+    <label>Giá tiền</label>
+    <input {...register("price")} type="text" className="form-control" placeholder="Nhập giá"/>
+     </div>
+  <button type="submit" className="btn btn-primary">Submit</button>
+</form>
     </div>
   )
 }
